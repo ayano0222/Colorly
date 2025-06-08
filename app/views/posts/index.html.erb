@@ -2,4 +2,6 @@
 <% @posts.each do |post| %>
     <p>コスメ</p>
     <span><%= link_to post.location, post_path(post) %></span>
+    <p>画像</p>
+    <%= attachment_image_tag post, :image, format: 'jpeg', size: '100x100' %>
   <% end %>
