@@ -1,0 +1,107 @@
+h1 {
+    font-family: serif;
+  }
+  
+  .cover-new {
+    height: 100%;
+    width: 100%;
+    background-image: url(/assets/new.jpg);
+    background-color: rgba(255, 255, 255, 0.4);
+    background-blend-mode: lighten;
+    background-size: 100% 100%;
+  }
+  
+  .form-label {
+    font-size: 20px;
+  }
+  
+  .form-group {
+    width: 600px;
+  }
+
+  .cover-index {
+    height: 100%;
+    width: 100%;
+    background-image: url(/assets/index.jpg);
+    .cover-index {
+        height: 100%;
+        width: 100%;
+        background-image: url(/assets/index.jpg);
+        background-color: rgba(255, 255, 255, 0.4);
+        background-blend-mode: lighten;
+        background-size: 100% 100%;
+      }
+      
+      .one-post img:hover {
+        transform: scale(1.2,1.2);
+      }
+      
+      .caption {
+        color: black;
+        font-size: 20px;
+        text-decoration: none;
+      }
+      
+      .index-left {
+        margin-left: 2.5rem!important;
+      }
+    background-size: 100% 100%;
+  }
+  
+  .one-post img:hover {
+    transform: scale(1.2,1.2);
+  }
+  
+  .caption {
+    color: black;
+    font-size: 20px;
+    text-decoration: none;
+  }
+  
+  .index-left {
+    margin-left: 2.5rem!important;
+  }
+
+
+  .cover-show {
+    height: 110%;
+    width: 100%;
+    background-image: url(/assets/show.jpg);
+    background-size: 100% 100%;
+  }
+  
+  #text {
+    font-size: 18px;
+  }
+
+
+  .cover-edit {
+    height: 110%;
+    width: 100%;
+    background-image: url(/assets/edit.jpg);
+    background-color: rgba(255, 255, 255, 0.4);
+    background-blend-mode: lighten;
+    background-size: 100% 100%;
+  }
+
+.page a,
+.next a,
+.last a,
+.first a,
+.prev a {
+  color: black;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.page a:hover,
+.next a:hover,
+.last a:hover,
+.first a:hover,
+.prev a:hover {
+  color: black;
+}
+
+.current {
+  font-weight: bold;
+}
