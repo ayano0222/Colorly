@@ -1,8 +1,21 @@
 <div class="cover-show">
-  <div class="container">
-    <div class="row">
+  <div class="container"><div class="container d-flex flex-column align-items-center">
+    <div class="row mt-5 mb-5">
       <h1 class="font-weight-normal mt-5 mb-5">コスメ投稿詳細</h1>
     </div>
+
+    <% if @comment.errors.any? %>
+      <div class="card text-center text-white bg-danger mt-3">
+        <%= @comment.errors.count %>件のエラーが発生しました
+        <% @comment.errors.full_messages.each do |message| %>
+          <%= message %>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="container d-flex mt-5">
+
+
+
     <div class="d-flex">
       <div class="d-block">
         <p class="caption"><%= @post.user.name %></p>
@@ -21,8 +34,10 @@
 
         <h2>感想</h2>
         <p id="text"><%= @post.text %></p>
-        <%= link_to '編集する', edit_post_path(@post.id), class: "btn btn-info mr-3" %>
-        <%= link_to '削除する', post_path(@post.id),  data: { turbo_method: :delete, turbo_confirm:  "本当に消しますか？"}, class: "btn btn-danger" %><br>
+        <% if @post.user == current_user %>
+          <%= link_to '編集する', edit_post_path(@post.id), class: "btn btn-info mr-3" %>
+          <%= link_to '削除する', post_path(@post.id),  data: { turbo_method: :delete, turbo_confirm:  "本当に消しますか？"}, class: "btn btn-danger" %><br>
+        <% end %>
         <%= link_to '投稿一覧ページへ', posts_path, class: "btn btn-dark mt-3" %>
       </div>
       <div class="comments ml-5 mt-5">
