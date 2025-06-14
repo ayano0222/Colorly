@@ -124,6 +124,8 @@ GEM
       warden (~> 1.2.3)
     domain_name (0.6.20240107)
     drb (2.2.3)
+    enum_help (0.0.19)
+      activesupport (>= 3.0.0)
     erb (4.0.4)
       cgi (>= 0.3.3)
     error_highlight (0.7.0)
@@ -344,6 +346,7 @@ DEPENDENCIES
   capybara
   debug
   devise
+  enum_help
   error_highlight (>= 0.4.0)
   ffi
   importmap-rails
