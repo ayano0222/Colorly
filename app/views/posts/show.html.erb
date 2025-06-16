@@ -46,6 +46,8 @@
           <%= f.submit "送信する", class: "btn btn-success mb-4" %>
         <% end %>
 
+        閲覧数 <%= @post.view_counts.count %>
+
         <p>コメント件数：<%= @comments.count %></p>
         <% @comments.each do |comment| %>
           <div class="comments-index mb-2">
