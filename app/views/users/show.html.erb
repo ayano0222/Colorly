@@ -24,6 +24,20 @@
           <%= link_to 'フォローする', user_relationships_path(@user.id),  data: { turbo_method: :post }, class:"btn btn-success" %>
         </p>
       <% end %>
+      <% if @is_room == true %>
+        <p class="d-flex align-self-end">
+          <%= link_to 'メッセージへ', room_path(@room_id), class: "btn btn-primary mt-2" %>
+        </p>
+      <% else %>
+        <div class="d-flex align-self-end mt-2">
+          <%= form_for @room do |f| %>
+            <%= fields_for @entry do |e| %>
+              <%= e.hidden_field :user_id, value: @user.id %>
+            <% end %>
+            <%= f.submit 'メッセージを送る', class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      <% end %>
     <% end %>
 
     <div class="d-flex w-100">
