@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_06_18_134438) do
+ActiveRecord::Schema[7.1].define(version: 2025_06_19_144351) do
   create_table "comments", force: :cascade do |t|
     t.text "comment"
     t.integer "user_id"
@@ -45,6 +45,15 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_18_134438) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
+  create_table "post_tag_relations", force: :cascade do |t|
+    t.integer "post_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_post_tag_relations_on_post_id"
+    t.index ["tag_id"], name: "index_post_tag_relations_on_tag_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "location"
     t.string "text"
@@ -66,6 +75,12 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_18_134438) do
   end
 
   create_table "rooms", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -98,6 +113,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_18_134438) do
   add_foreign_key "entries", "users"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "post_tag_relations", "posts"
+  add_foreign_key "post_tag_relations", "tags"
   add_foreign_key "relationships", "users", column: "followed_id"
   add_foreign_key "relationships", "users", column: "follower_id"
   add_foreign_key "view_counts", "posts"
