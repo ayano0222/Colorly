@@ -6,9 +6,9 @@ class Post < ApplicationRecord
     has_many :favorites, dependent: :destroy
     has_many :view_counts, dependent: :destroy
     #tweetsテーブルから中間テーブルに対する関連付け
-    has_many :tweet_tag_relations, dependent: :destroy
+    has_many :post_tag_relations, dependent: :destroy
     #tweetsテーブルから中間テーブルを介してTagsテーブルへの関連付け
-    has_many :tags, through: :tweet_tag_relations, dependent: :destroy
+    has_many :tags, through: :post_tag_relations, dependent: :destroy
 
     validates :location, presence: true, length: { maximum: 15 }
     validates :text, presence: true, length: { maximum: 195 }

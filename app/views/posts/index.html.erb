@@ -4,6 +4,19 @@
       <h1 class="font-weight-normal">コスメ投稿一覧</h1>
     </div>
 
+    <%= form_tag({controller:"posts",action:"index"}, method: :get) do %>
+      <% Tag.all.each do |t| %>
+        <li><%= check_box :tag_ids, t.name %><%= t.name %></li>
+      <% end %>
+      <%= submit_tag '検索' %>
+    <% end %>
+
+    <%= form_tag({controller:"posts",action:"index"}, method: :get) do %>
+      <%= text_field_tag :tag %>
+      <%= submit_tag 'タグを追加' %>
+    <% end %>
+
+
     <%= render 'index', posts: @posts %>
 
   </div>

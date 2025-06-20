@@ -16,6 +16,31 @@ class PostsController < ApplicationController
   def index
     @posts = Post.published.page(params[:page]).reverse_order
     @posts = @posts.where('location LIKE ?', "%#{params[:search]}%") if params[:search].present?
+  
+    if params[:tag_ids]
+      @posts = []
+      params[:tag_ids].each do |key, value|
+        if value == "1"
+          tag_posts = Tag.find_by(name: key).posts
+          @posts = @posts.empty? ? tag_posts : @posts & tag_posts
+        end
+      end
+    end
+
+    if params[:tag_ids]
+      @posts = []
+      params[:tag_ids].each do |key, value|
+        if value == "1"
+          tag_posts = Tag.find_by(name: key).posts
+          @posts = @posts.empty? ? tag_posts : @posts & tag_posts
+        end
+      end
+    end
+
+    if params[:tag]
+      Tag.create(name: params[:tag])
+    end
+
   end
 
   def show
@@ -53,6 +78,6 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:user_id, :location, :text, :image, :status)
+    params.require(:post).permit(:user_id, :location, :text, :image, :status, tag_ids: [])
   end
 end

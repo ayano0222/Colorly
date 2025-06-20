@@ -20,6 +20,11 @@
       <div class="d-block">
         <p class="caption"><%= @post.user.name %></p>
         <%= attachment_image_tag @post, :image, format: 'jpeg', size: "450x350" %><br>
+
+        <% @post.tags.each do |tag| %>
+          <span><%= tag.name %></span>
+        <% end %>
+
         <p class="caption"><%= @post.location %>
           <% if @post.favorited_by?(current_user) %>
             <%= link_to post_favorites_path(@post),  data: { turbo_method: :delete }, class: "favorite_btn" do %>

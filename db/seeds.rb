@@ -7,3 +7,20 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+Tag.destroy_all  # タグテーブルの全データを削除
+
+Tag.create([
+  { name: 'ベース' },
+  { name: 'コンシーラー' },
+  { name: 'ファンデーション' },
+  { name: 'パウダー' },
+  { name: 'アイブロウ' },
+  { name: 'アイシャドウ' },
+  { name: 'アイライナー' },
+  { name: 'マスカラ' },
+  { name: 'シェーディング' },
+  { name: 'ハイライト' },
+  { name: 'リップ' },
+  { name: 'その他' }
+])
