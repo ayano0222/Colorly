@@ -14,40 +14,37 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.published.page(params[:page]).reverse_order
-    @posts = @posts.where('location LIKE ?', "%#{params[:search]}%") if params[:search].present?
-  
-    if params[:tag_ids]
-      @posts = []
-      params[:tag_ids].each do |key, value|
-        if value == "1"
-          tag_posts = Tag.find_by(name: key).posts
-          @posts = @posts.empty? ? tag_posts : @posts & tag_posts
-        end
-      end
+    @posts = Post.published
+
+    # フリーワード検索
+    if params[:search].present?
+      @posts = @posts.where('location LIKE ?', "%#{params[:search]}%")
     end
 
+    # タグによる絞り込み
     if params[:tag_ids]
-      @posts = []
+      tag_posts = []
       params[:tag_ids].each do |key, value|
         if value == "1"
-          tag_posts = Tag.find_by(name: key).posts
-          @posts = @posts.empty? ? tag_posts : @posts & tag_posts
+          found_tag = Tag.find_by(name: key)
+          tag_posts = tag_posts.empty? ? found_tag&.posts : tag_posts & found_tag&.posts if found_tag
         end
       end
+      @posts = tag_posts unless tag_posts.empty?
     end
 
+    @posts = @posts.page(params[:page]).reverse_order
+
+    # タグの新規登録（必要なら）
     if params[:tag]
       Tag.create(name: params[:tag])
     end
-
   end
 
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
     @comments = @post.comments.page(params[:page]).per(7).reverse_order
-    @post = Post.find(params[:id])
     unless ViewCount.find_by(user_id: current_user.id, post_id: @post.id)
       current_user.view_counts.create(post_id: @post.id)
     end
@@ -60,7 +57,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      redirect_to post_path(post.id)
+      redirect_to post_path(@post.id)
     else
       render :edit, status: :unprocessable_entity
     end
@@ -77,6 +74,7 @@ class PostsController < ApplicationController
   end
 
   private
+
   def post_params
     params.require(:post).permit(:user_id, :location, :text, :image, :status, tag_ids: [])
   end
