@@ -37,6 +37,10 @@
          <% end %>
         </p>
 
+        <% @post.tags.each do |tag| %>
+          <span class="badge bg-secondary me-1"><%= tag.name %></span>
+        <% end %>
+
         <h2>感想</h2>
         <p id="text"><%= @post.text %></p>
         <% if @post.user == current_user %>

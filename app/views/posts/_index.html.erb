@@ -13,6 +13,15 @@
             <%= attachment_image_tag post, :image, format: 'jpeg', size: '300x200' %>
             <p class="caption"><%= post.location %></p>
             <p class="caption"><%= "#{post.comments.count} コメント" %></p>
+
+            <% if post.tags.present? %>
+              <div class="caption tags">
+                <% post.tags.each do |tag| %>
+                  <span class="tag">#<%= tag.name %></span>
+                <% end %>
+              </div>
+            <% end %>
+            
           <% end %>
         </div>
       <% end %>
