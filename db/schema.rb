@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_06_19_144351) do
+ActiveRecord::Schema[7.1].define(version: 2025_06_21_170903) do
+  create_table "bookmarks", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "article_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_bookmarks_on_article_id"
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
+  end
+
   create_table "comments", force: :cascade do |t|
     t.text "comment"
     t.integer "user_id"
@@ -109,6 +118,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_19_144351) do
     t.index ["user_id"], name: "index_view_counts_on_user_id"
   end
 
+  add_foreign_key "bookmarks", "articles"
+  add_foreign_key "bookmarks", "users"
   add_foreign_key "entries", "rooms"
   add_foreign_key "entries", "users"
   add_foreign_key "messages", "rooms"

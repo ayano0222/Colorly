@@ -46,6 +46,11 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     @users = user.follower_user.page(params[:page]).per(3).reverse_order
   end
+
+  def bookmarks
+    @user = User.find(params[:user_id])
+    @articles = @user.bookmark_articles
+  end
   
   private
   def user_params

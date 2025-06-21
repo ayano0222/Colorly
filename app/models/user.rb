@@ -14,6 +14,8 @@ class User < ApplicationRecord
   has_many :view_counts, dependent: :destroy
   has_many :entries, dependent: :destroy
   has_many :messages, dependent: :destroy
+  has_many :bookmarks
+  has_many :bookmark_articles, through: :bookmarks, source: :articl
 
   attachment :profile_image
 
