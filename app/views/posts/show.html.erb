@@ -21,9 +21,12 @@
         <p class="caption"><%= @post.user.name %></p>
         <%= attachment_image_tag @post, :image, format: 'jpeg', size: "450x350" %><br>
 
-        <% @post.tags.each do |tag| %>
-          <span><%= tag.name %></span>
-        <% end %>
+        <div class="tags mt-3">
+          <% @post.tags.each do |tag| %>
+            <span class="badge bg-secondary me-1"><%= tag.name %></span>
+          <% end %>
+        </div>
+     
 
         <p class="caption"><%= @post.location %>
           <% if @post.favorited_by?(current_user) %>

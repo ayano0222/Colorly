@@ -4,16 +4,16 @@
       <h1 class="font-weight-normal">コスメ投稿一覧</h1>
     </div>
 
-    <%= form_tag({controller:"posts",action:"index"}, method: :get) do %>
+    <%= form_tag({controller:"posts",action:"index"}, method: :get, class: "d-flex flex-wrap gap-3 mb-3") do %>
       <% Tag.all.each do |t| %>
-        <li><%= check_box :tag_ids, t.name %><%= t.name %></li>
+        <div class="form-check me-2">
+          <%= label_tag "tag_ids_#{t.name}", class: "form-check-label" do %>
+            <%= check_box_tag "tag_ids[#{t.name}]", "1", false, id: "tag_ids_#{t.name}", class: "form-check-input me-1" %>
+            <%= t.name %>
+          <% end %>
+        </div>
       <% end %>
-      <%= submit_tag '検索' %>
-    <% end %>
-
-    <%= form_tag({controller:"posts",action:"index"}, method: :get) do %>
-      <%= text_field_tag :tag %>
-      <%= submit_tag 'タグを追加' %>
+      <%= submit_tag '検索', class: "btn btn-primary ms-2" %>
     <% end %>
 
 
