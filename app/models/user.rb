@@ -14,6 +14,8 @@ class User < ApplicationRecord
   has_many :view_counts, dependent: :destroy
   has_many :entries, dependent: :destroy
   has_many :messages, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
+  has_many :bookmark_posts, through: :bookmarks, source: :post
 
   attachment :profile_image
 
@@ -31,6 +33,10 @@ class User < ApplicationRecord
   def following?(user)
     following_user.include?(user)
   end  
+
+  def bookmark?(post)
+    self.bookmarks.exists?(post_id: post.id)
+  end
 
   validates :name, presence: true
   

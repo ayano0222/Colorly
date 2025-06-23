@@ -73,6 +73,11 @@ class PostsController < ApplicationController
     @posts = current_user.posts.draft.page(params[:page]).reverse_order
   end
 
+  def bookmarks
+    @posts = current_user.bookmark_posts.includes(:user, image_attachment: :blob).page(params[:page]).reverse_order
+    # ビューは bookmarks.html.erb が自動で使われます
+  end
+
   private
 
   def post_params

@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  get 'bookmarks/create'
+  get 'bookmarks/destroy'
   devise_for :users
   
   resources :users, only:[:index, :show, :edit, :update] do
     member do
       get :follows, :followers
+      get :bookmarks
     end
     resource :relationships, only: [:create, :destroy]
   end
@@ -11,8 +14,10 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments, only:[:create, :destroy]
     resource :favorites, only:[:create, :destroy]
+    resource :bookmark, only: [:create, :destroy]
     collection do
       get 'confirm'
+      get 'bookmarks', to: 'bookmarks#index'
     end
   end
 

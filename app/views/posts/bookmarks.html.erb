@@ -1,0 +1,19 @@
+<h2>ブックマークした投稿</h2>
+
+<% if @posts.any? %>
+  <div class="row">
+    <% @posts.each do |post| %>
+      <div class="col-sm-4 mb-3">
+        <%= link_to post_path(post) do %>
+          <p><%= post.user.name %></p>
+          <%= image_tag post.image.variant(resize: "300x200") if post.image.attached? %>
+          <p><%= post.location %></p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <%= paginate @posts %>
+<% else %>
+  <p>ブックマーク中の投稿はありません。</p>
+<% end %>
