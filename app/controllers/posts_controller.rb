@@ -39,7 +39,11 @@ class PostsController < ApplicationController
     if params[:tag]
       Tag.create(name: params[:tag])
     end
+
+
   end
+
+ 
 
   def show
     @post = Post.find(params[:id])

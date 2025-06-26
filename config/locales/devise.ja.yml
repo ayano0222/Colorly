@@ -12,3 +12,13 @@ ja:
               blank: "パスワードを入力してください。"
             name:
               blank: "名前を入力してください。"
+        post:
+          attributes:
+            location:
+              blank: "商品名を入力してください。"
+            text:
+              blank: "本文を入力してください。"
+        comment:
+          attributes:
+            comment:
+              blank: "コメントを入力してください。"
