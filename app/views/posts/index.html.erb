@@ -17,8 +17,15 @@
       <%= submit_tag '検索', class: "btn btn-primary ms-2" %>
     <% end %>
 
+    <% if @posts.any? %>
+      <%= render 'index', posts: @posts %>
+    <% else %>
+      <div class="text-center mt-5">
+        <p>一致する投稿はありません。</p>
+      </div>
+    <% end %>
 
-    <%= render 'index', posts: @posts %>
+
 
   </div>
 </div>

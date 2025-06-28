@@ -14,35 +14,40 @@ class PostsController < ApplicationController
   end
 
   def index
+    # ベースは公開投稿
     @posts = Post.published
 
-    # フリーワード検索
+    # ------------ 1) フリーワード ------------
     if params[:search].present?
       @posts = @posts.where('location LIKE ?', "%#{params[:search]}%")
     end
 
-    # タグによる絞り込み
+    # ------------ 2) タグ絞り込み ------------
     if params[:tag_ids]
       tag_posts = []
+
       params[:tag_ids].each do |key, value|
-        if value == "1"
-          found_tag = Tag.find_by(name: key)
-          tag_posts = tag_posts.empty? ? found_tag&.posts : tag_posts & found_tag&.posts if found_tag
-        end
+        next unless value == "1"        # チェックされたタグだけ
+        next unless (tag = Tag.find_by(name: key))
+
+        tag_posts = tag_posts.empty? ? tag.posts.to_a : tag_posts & tag.posts.to_a
       end
-      @posts = tag_posts unless tag_posts.empty?
+
+      
+      @posts =
+        if tag_posts.empty?
+          Post.none                         # 0 件の Relation
+        else
+          Kaminari.paginate_array(tag_posts).page(params[:page]).per(10)
+        end
+    else
+      # タグ検索をしていないときは普通にページング
+      @posts = @posts.page(params[:page]).per(10)
     end
 
-    @posts = @posts.page(params[:page]).reverse_order
-
-    # タグの新規登録（必要なら）
-    if params[:tag]
-      Tag.create(name: params[:tag])
-    end
-
-
+    # ------------ 3) タグの新規登録（任意）------------
+    Tag.create(name: params[:tag]) if params[:tag]
   end
-
  
 
   def show
