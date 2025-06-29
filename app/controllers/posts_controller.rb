@@ -52,6 +52,13 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+
+    # 「下書き」かつ「投稿者が自分でない」場合はリダイレクト
+    if @post.status == 'draft' && @post.user != current_user
+      redirect_to posts_path, alert: "この投稿は表示できません。"
+      return
+    end
+
     @comment = Comment.new
     @comments = @post.comments.page(params[:page]).per(7).reverse_order
     unless ViewCount.find_by(user_id: current_user.id, post_id: @post.id)

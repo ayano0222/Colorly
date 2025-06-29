@@ -5,7 +5,15 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.page(params[:page]).per(8).reverse_order
+
+    if @user == current_user
+      # 自分のマイページ → 全投稿（下書き含む）
+      @posts = @user.posts.page(params[:page]).per(8).reverse_order
+    else
+      # 他人のマイページ → 公開投稿だけ
+      @posts = @user.posts.where(status: 'published').page(params[:page]).per(8).reverse_order
+    end
+
     @following_users = @user.following_user
     @follower_users = @user.follower_user
     @current_entry = Entry.where(user_id: current_user.id)
