@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_06_30_135800) do
+ActiveRecord::Schema[7.1].define(version: 2025_06_30_142604) do
   create_table "bookmarks", force: :cascade do |t|
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
@@ -71,6 +71,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_30_135800) do
     t.string "image_id"
     t.integer "user_id"
     t.integer "status", default: 0, null: false
+    t.string "personal_color"
   end
 
   create_table "relationships", force: :cascade do |t|

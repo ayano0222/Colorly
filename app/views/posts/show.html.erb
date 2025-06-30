@@ -25,6 +25,10 @@
     <div class="d-flex">
       <div class="d-block">
         <p class="caption"><%= @post.user.name %></p>
+        <% if @post.user.personal_color.present? %>
+          <p class="caption">パーソナルカラー：<%= @post.user.personal_color %></p>
+        <% end %>
+        
         <%= attachment_image_tag @post, :image, format: 'jpeg', size: "450x350" %><br>
 
         <div class="tags mt-3">
