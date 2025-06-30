@@ -27,6 +27,11 @@
         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
 
+      <div class="box-color">
+        <%= f.label :personal_color, "パーソナルカラー" %><br />
+        <%= f.select :personal_color, ['スプリング', 'サマー', 'オータム', 'ウィンター'], { prompt: '選択してください' } %>
+      </div>
+
       <div class="box-login">
         <%= f.submit "新規登録" %>
       </div>
