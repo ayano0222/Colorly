@@ -29,7 +29,9 @@
 
       <div class="box-color">
         <%= f.label :personal_color, "パーソナルカラー" %><br />
-        <%= f.select :personal_color, ['スプリング', 'サマー', 'オータム', 'ウィンター'], { prompt: '選択してください' } %>
+        <%= f.select :personal_color,
+          [["スプリング", "spring"], ["サマー", "summer"], ["オータム", "autumn"], ["ウィンター", "winter"]],
+          { prompt: '選択してください' } %>
       </div>
 
       <div class="box-login">

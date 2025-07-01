@@ -14,39 +14,43 @@ class PostsController < ApplicationController
   end
 
   def index
-    # ベースは公開投稿
-    @posts = Post.published
+    @posts = Post.published.includes(:user)
 
-    # ------------ 1) フリーワード ------------
+    # フリーワード検索
     if params[:search].present?
       @posts = @posts.where('location LIKE ?', "%#{params[:search]}%")
     end
 
-    # ------------ 2) タグ絞り込み ------------
+    # タグ絞り込み
     if params[:tag_ids]
       tag_posts = []
 
       params[:tag_ids].each do |key, value|
-        next unless value == "1"        # チェックされたタグだけ
+        next unless value == "1"
         next unless (tag = Tag.find_by(name: key))
-
-        tag_posts = tag_posts.empty? ? tag.posts.to_a : tag_posts & tag.posts.to_a
+        tag_posts = tag_posts.empty? ? tag.posts.published.to_a : tag_posts & tag.posts.published.to_a
       end
 
-      
-      @posts =
-        if tag_posts.empty?
-          Post.none                         # 0 件の Relation
-        else
-          Kaminari.paginate_array(tag_posts).page(params[:page]).per(10)
-        end
-    else
-      # タグ検索をしていないときは普通にページング
-      @posts = @posts.page(params[:page]).per(10)
+      # ★ここでは一旦配列にする（joinsは使えない）
+      @posts = tag_posts
     end
 
-    # ------------ 3) タグの新規登録（任意）------------
-    Tag.create(name: params[:tag]) if params[:tag]
+    # パーソナルカラー絞り込み
+    if params[:personal_color].present?
+      # ★ActiveRecord::Relation なら joins できるが、配列なら select で代用
+      if @posts.is_a?(ActiveRecord::Relation)
+       @posts = @posts.joins(:user).where(users: { personal_color: params[:personal_color] })
+      else
+        @posts = @posts.select { |post| post.user.personal_color == params[:personal_color] }
+      end
+    end
+
+    # ページネーション（配列なら paginate_array）
+    if @posts.is_a?(Array)
+      @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(10)
+    else
+      @posts = @posts.page(params[:page]).per(10)
+    end
   end
  
 

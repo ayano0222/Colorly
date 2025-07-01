@@ -14,6 +14,11 @@
           <% end %>
         </div>
       <% end %>
+
+        <div class="form-group me-2">
+          <%= select_tag :personal_color, options_for_select([["すべて", ""], ["スプリング", "spring"], ["サマー", "summer"], ["オータム", "autumn"], ["ウィンター", "winter"]], params[:personal_color]), class: "form-select" %>
+        </div>
+        
       <%= submit_tag '検索', class: "btn btn-primary ms-2" %>
     <% end %>
 
