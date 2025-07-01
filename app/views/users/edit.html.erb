@@ -10,6 +10,13 @@
           <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前", class: "form-control" %>
         </div>
         <div class="form-group">
+          <label class="form-label">パーソナルカラー</label>
+          <%= f.select :personal_color, 
+                [['スプリング', 'spring'], ['サマー', 'summer'], ['オータム', 'autumn'], ['ウィンター', 'winter']], 
+                { prompt: '選択してください' }, 
+                class: "form-control w-25" %>
+        </div>
+        <div class="form-group">
           <label class="form-label">プロフィール画像</label><br>
           <%= attachment_image_tag @user, :profile_image, size: '100x100', fallback: "no_image.svg", class: "mb-3 profile-img" %><br>
           <%= f.file_field :profile_image %>
