@@ -1,20 +1,35 @@
-  .title {
-    font-family: cursive;
-  }
-  
-  .sub-title {
-    font-family: serif;
-  }
-  
-  .cover {
-    height: 100%;
-    width: 100%;
-    display: table;
-    background-image: url(/assets/top.jpg);
-    background-size: 100% 100%;
-  }
-  
-  .text-center {
-    display: table-cell;
-    vertical-align: middle;
-  }
+@import "variables";
+
+.title {
+  font-family: $font-base;
+  font-size: 2.2em;
+  font-weight: 700;
+  color: $color-navy;
+  margin-bottom: 0.5em;
+}
+
+.sub-title {
+  font-family: $font-base;
+  font-size: 1.3em;
+  color: $color-gray;
+  margin-bottom: 1.5em;
+}
+
+.cover {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(/assets/top.jpg);
+  background-size: cover;
+  background-position: center;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(34,58,94,0.07);
+  margin-bottom: 2em;
+}
+
+.text-center {
+  text-align: center;
+  width: 100%;
+}

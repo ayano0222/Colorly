@@ -15,6 +15,7 @@
  */
 
  @import "bootstrap";
+ @import "variables";
 
 html,
 
@@ -63,12 +64,16 @@ a:hover {
 }
 
 a {
+  color: $color-navy;
+  transition: color 0.2s, background 0.2s;
   text-decoration: none;
-}
-
-a:hover {
-  color: aqua!important;
-  text-decoration: underline;
+  &:hover {
+    color: #fff;
+    background: $color-navy;
+    text-decoration: underline;
+    border-radius: 4px;
+    padding: 2px 6px;
+  }
 }
 
 .profile-img {
@@ -83,4 +88,125 @@ a:hover {
   margin-right: 5px;
   font-size: 0.85em;
   color: #444;
+}
+
+// =============================
+// ベースカラー・フォント・共通スタイル
+// =============================
+
+body {
+  background: $color-bg;
+  color: $color-text;
+  font-family: $font-base;
+  font-size: 16px;
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-base;
+  color: $color-navy;
+  font-weight: 700;
+  margin-bottom: 0.5em;
+}
+
+p {
+  color: $color-text;
+  margin-bottom: 1em;
+}
+
+a {
+  color: $color-navy;
+  transition: color 0.2s;
+  text-decoration: none;
+  &:hover {
+    color: $color-beige;
+    background: $color-navy;
+    text-decoration: underline;
+    border-radius: 4px;
+    padding: 2px 6px;
+  }
+}
+
+// ボタン
+.button, input[type="submit"], button {
+  background: $color-navy;
+  color: $color-bg;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5em 1.5em;
+  font-size: 1em;
+  font-family: $font-base;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(34,58,94,0.07);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  &:hover {
+    background: $color-beige;
+    color: $color-navy;
+    box-shadow: 0 4px 16px rgba(34,58,94,0.12);
+  }
+}
+
+// フォーム
+input, textarea, select {
+  border: 1px solid $color-border;
+  border-radius: 4px;
+  padding: 0.5em;
+  font-family: $font-base;
+  font-size: 1em;
+  background: #fafafa;
+  margin-bottom: 1em;
+  transition: border 0.2s;
+  &:focus {
+    border: 1.5px solid $color-navy;
+    outline: none;
+  }
+}
+
+// カード
+.card {
+  background: $color-beige;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(34,58,94,0.07);
+  padding: 2em;
+  margin-bottom: 2em;
+}
+
+// 余白
+.section {
+  margin: 2em 0;
+}
+
+// ヘッダー
+header {
+  background: $color-navy;
+  color: $color-bg;
+  box-shadow: 0 2px 8px rgba(34,58,94,0.07);
+  padding: 0.7em 2em;
+  border-bottom: 1px solid $color-border;
+}
+header a {
+  color: $color-bg;
+  font-weight: 600;
+  &:hover {
+    color: $color-beige;
+    background: transparent;
+  }
+}
+
+// プロフィール画像
+.profile-img {
+  border-radius: 50%;
+  border: 2px solid $color-navy;
+}
+
+// タグ
+.tag {
+  background: $color-beige;
+  color: $color-navy;
+  border-radius: 10px;
+  padding: 2px 10px;
+  font-size: 0.9em;
+  margin-right: 6px;
 }

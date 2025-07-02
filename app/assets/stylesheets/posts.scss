@@ -1,3 +1,5 @@
+@import "variables";
+
 h1 {
     font-family: serif;
   }
@@ -13,49 +15,46 @@ h1 {
   
   .form-label {
     font-size: 20px;
+    font-weight: 600;
+    color: $color-navy;
   }
   
   .form-group {
-    width: 600px;
+    width: 100%;
+    max-width: 600px;
   }
 
   .cover-index {
     height: 110%;
     width: 100%;
     background-image: url(/assets/index.jpg);
-    .cover-index {
-        height: 100%;
-        width: 100%;
-        background-image: url(/assets/index.jpg);
-        background-color: rgba(255, 255, 255, 0.4);
-        background-blend-mode: lighten;
-        background-size: 100% 100%;
-      }
-      
-      .one-post img:hover {
-        transform: scale(1.2,1.2);
-      }
-      
-      .caption {
-        color: black;
-        font-size: 20px;
-        text-decoration: none;
-      }
-      
-      .index-left {
-        margin-left: 2.5rem!important;
-      }
+    background-color: rgba(255, 255, 255, 0.4);
+    background-blend-mode: lighten;
     background-size: 100% 100%;
   }
   
+  .one-post img {
+    border-radius: 12px;
+    transition: transform 0.2s;
+  }
+  
   .one-post img:hover {
-    transform: scale(1.2,1.2);
+    transform: scale(1.08,1.08);
+    box-shadow: 0 4px 16px rgba(34,58,94,0.12);
   }
   
   .caption {
-    color: black;
+    color: $color-navy;
     font-size: 20px;
     text-decoration: none;
+    margin-bottom: 0;
+    transition: color 0.2s, background 0.2s;
+  }
+  
+  .one-post.card a:hover .caption,
+  .one-post.card a:focus .caption {
+    color: #fff !important;
+    background: none;
   }
   
   .index-left {
@@ -89,7 +88,7 @@ h1 {
 .last a,
 .first a,
 .prev a {
-  color: black;
+  color: $color-navy;
   margin-left: 10px;
   margin-right: 10px;
 }
@@ -99,16 +98,21 @@ h1 {
 .last a:hover,
 .first a:hover,
 .prev a:hover {
-  color: black;
+  color: $color-beige;
+  background: $color-navy;
+  border-radius: 4px;
 }
 
 .current {
   font-weight: bold;
+  color: $color-navy;
 }
 
 .comments-index {
-  background-color: #fff;
-  border: 1px #000 solid;
+  background-color: $color-bg;
+  border: 1px $color-navy solid;
+  border-radius: 8px;
+  padding: 1em;
 }
 
 .comment-delete {
@@ -119,10 +123,15 @@ h1 {
   margin-left: 50px;
 }
 
-.caption {
-  margin-bottom: 0;
+.favorite_btn {
+  color: $color-navy;
 }
 
-.favorite_btn {
-  color: #000;
+.one-post.card {
+  margin: 1.5em 0.5em;
+  padding: 1.5em 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 350px;
 }
