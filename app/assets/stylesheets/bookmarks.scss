@@ -22,3 +22,17 @@
   width: 100%;
   max-width: 600px;
 }
+
+.card-title a {
+  color: $color-navy;
+  font-style: normal;
+  font-weight: 600;
+  transition: color 0.2s, font-style 0.2s;
+  text-decoration: none;
+}
+.card-title a:hover, .card-title a:focus {
+  color: #1a73e8;
+  font-style: italic;
+  text-decoration: underline;
+  background: none;
+}

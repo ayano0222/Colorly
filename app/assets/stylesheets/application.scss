@@ -65,14 +65,11 @@ a:hover {
 
 a {
   color: $color-navy;
-  transition: color 0.2s, background 0.2s;
+  transition: color 0.2s;
   text-decoration: none;
   &:hover {
-    color: #fff;
-    background: $color-navy;
+    color: #1a73e8;
     text-decoration: underline;
-    border-radius: 4px;
-    padding: 2px 6px;
   }
 }
 
@@ -120,11 +117,8 @@ a {
   transition: color 0.2s;
   text-decoration: none;
   &:hover {
-    color: $color-beige;
-    background: $color-navy;
+    color: #1a73e8;
     text-decoration: underline;
-    border-radius: 4px;
-    padding: 2px 6px;
   }
 }
 
@@ -166,11 +160,12 @@ input, textarea, select {
 
 // カード
 .card {
-  background: $color-beige;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(34,58,94,0.07);
-  padding: 2em;
-  margin-bottom: 2em;
+  background: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  margin-bottom: 0;
 }
 
 // 余白
