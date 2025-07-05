@@ -165,3 +165,285 @@ h1 {
   text-decoration: underline;
   background: none;
 }
+
+// タグ検索の洗練されたデザイン
+.search-box {
+  background: #B0E0E6;
+  border: 2px solid #B0E0E6;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(34,58,94,0.07);
+  padding: 1.2em;
+  width: 80%;
+  max-width: 1000px;
+}
+
+.search-title {
+  color: $color-navy;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1em;
+  font-size: 1.1em;
+}
+
+.word-search-section {
+  border-bottom: 1px solid rgba(34,58,94,0.1);
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+}
+
+.search-label {
+  display: block;
+  color: $color-navy;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+  font-size: 0.9em;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.6em;
+  border: 1px solid $color-border;
+  border-radius: 6px;
+  background: white;
+  font-size: 0.9em;
+  transition: border 0.2s;
+  
+  &:focus {
+    border-color: $color-navy;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(34,58,94,0.1);
+  }
+  
+  &::placeholder {
+    color: #999;
+    font-style: italic;
+  }
+}
+
+.section-title {
+  color: $color-navy;
+  font-weight: 600;
+  font-size: 0.95em;
+  margin-bottom: 0.5em;
+}
+
+.tag-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.5em;
+  margin-bottom: 0.8em;
+}
+
+.tag-item {
+  display: flex;
+  align-items: center;
+}
+
+.tag-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.3em 0.6em;
+  background: white;
+  border: 1px solid $color-border;
+  border-radius: 6px;
+  transition: all 0.2s;
+  width: 100%;
+  min-width: 0;
+  text-decoration: none;
+  color: $color-text;
+  
+  &:hover {
+    background: $color-beige;
+    border-color: $color-navy;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(34,58,94,0.1);
+  }
+}
+
+.tag-checkbox {
+  margin-right: 0.4em;
+  transform: scale(1.1);
+}
+
+.tag-text {
+  font-weight: 500;
+  font-size: 0.8em;
+  white-space: nowrap;
+}
+
+.filter-section {
+  border-top: 1px solid rgba(34,58,94,0.1);
+  padding-top: 1em;
+}
+
+.filter-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1em;
+}
+
+.filter-item {
+  flex: 1;
+  max-width: 300px;
+}
+
+.search-btn-container {
+  flex-shrink: 0;
+}
+
+.filter-label {
+  display: block;
+  color: $color-navy;
+  font-weight: 600;
+  margin-bottom: 0.3em;
+  font-size: 0.85em;
+}
+
+.filter-select {
+  width: 100%;
+  padding: 0.4em;
+  border: 1px solid $color-border;
+  border-radius: 6px;
+  background: white;
+  font-size: 0.85em;
+  transition: border 0.2s;
+  
+  &:focus {
+    border-color: $color-navy;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(34,58,94,0.1);
+  }
+}
+
+.search-btn {
+  width: 120px;
+  padding: 0.4em 1.2em;
+  background: $color-navy;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.85em;
+  cursor: pointer;
+  transition: all 0.2s;
+  
+  &:hover {
+    background: #1a73e8;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(34,58,94,0.2);
+  }
+}
+
+// 新規投稿フォームの横幅調整
+.post-form-box {
+  width: 100%;
+  max-width: 1200px;
+  background: #B0E0E6;
+  border: 2px solid #B0E0E6;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(34,58,94,0.07);
+  padding: 2em;
+  margin: 0 auto;
+}
+
+// 新規投稿フォームのセクション分離
+.form-section {
+  background: #B0E0E6;
+  border: 2px solid #B0E0E6;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(34,58,94,0.07);
+  padding: 1em;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto 1em auto;
+  min-height: auto;
+}
+
+.form-section .section-title {
+  color: $color-navy;
+  font-weight: 700;
+  font-size: 1.2em;
+  margin-bottom: 0.8em;
+  text-align: center;
+}
+
+.form-section .form-group {
+  margin-bottom: 0.8em;
+}
+
+.form-section .form-control {
+  height: auto;
+  min-height: 45px;
+  font-size: 1.1em;
+  width: calc(100% - 2px);
+  max-width: 100%;
+  padding: 10px 15px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-section .form-control:focus {
+  outline: none;
+  border-color: #40c4ff;
+  box-shadow: 0 0 0 2px rgba(64, 196, 255, 0.1);
+}
+
+.form-section textarea.form-control {
+  min-height: 100px;
+  resize: vertical;
+  width: calc(100% - 2px);
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.form-section .form-label {
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-bottom: 0.3em;
+  display: block;
+  color: $color-navy;
+}
+
+// タグ選択の横並びレイアウト
+.form-section .tag-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.form-section .tag-item {
+  flex: 0 0 auto;
+  margin: 0;
+}
+
+.form-section .tag-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 12px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.form-section .tag-label:hover {
+  background: #40c4ff;
+  color: white;
+  border-color: #40c4ff;
+}
+
+.form-section .tag-checkbox {
+  margin: 0;
+}
+
+.form-section .tag-text {
+  font-size: 0.9em;
+}

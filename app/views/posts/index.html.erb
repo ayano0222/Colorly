@@ -4,23 +4,40 @@
       <h1 class="font-weight-normal">コスメ投稿一覧</h1>
     </div>
 
-
-    <%= form_tag({controller:"posts",action:"index"}, method: :get, class: "d-flex flex-wrap gap-3 mb-3") do %>
-      <% Tag.all.each do |t| %>
-        <div class="form-check me-2">
-          <%= label_tag "tag_ids_#{t.name}", class: "form-check-label" do %>
-            <%= check_box_tag "tag_ids[#{t.name}]", "1", false, id: "tag_ids_#{t.name}", class: "form-check-input me-1" %>
-            <%= t.name %>
-          <% end %>
-        </div>
-      <% end %>
-
-        <div class="form-group me-2">
-          <%= select_tag :personal_color, options_for_select([["すべて", ""], ["スプリング", "spring"], ["サマー", "summer"], ["オータム", "autumn"], ["ウィンター", "winter"]], params[:personal_color]), class: "form-select" %>
+    <div class="search-box mb-4">
+      <%= form_tag({controller:"posts",action:"index"}, method: :get, class: "search-form") do %>
+        <div class="word-search-section mb-3">
+          <label class="search-label">キーワード検索</label>
+          <%= text_field_tag :search, params[:search], placeholder: "商品名で検索", class: "search-input" %>
         </div>
         
-      <%= submit_tag '検索', class: "btn btn-primary ms-2" %>
-    <% end %>
+        <div class="tag-section mb-3">
+          <label class="search-label">タグ検索</label>
+          <div class="tag-grid">
+            <% Tag.all.each do |t| %>
+              <div class="tag-item">
+                <%= label_tag "tag_ids_#{t.name}", class: "tag-label" do %>
+                  <%= check_box_tag "tag_ids[#{t.name}]", "1", false, id: "tag_ids_#{t.name}", class: "tag-checkbox" %>
+                  <span class="tag-text"><%= t.name %></span>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <div class="filter-row">
+            <div class="filter-item">
+              <label class="filter-label">パーソナルカラー</label>
+              <%= select_tag :personal_color, options_for_select([["すべて", ""], ["スプリング", "spring"], ["サマー", "summer"], ["オータム", "autumn"], ["ウィンター", "winter"]], params[:personal_color]), class: "filter-select" %>
+            </div>
+            <div class="search-btn-container">
+              <%= submit_tag '検索', class: "search-btn" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
 
     <% if @posts.any? %>
       <%= render 'index', posts: @posts %>

@@ -45,7 +45,7 @@
       <div class="ml-3 mb-3 profile-box w-100">
         <h4 class="mb-2"><%= @user.profile %></h4>
         <% if @user.personal_color.present? %>
-          <p class="mb-0"><strong>パーソナルカラー：</strong><%= @user.personal_color %></p>
+          <p class="mb-0"><strong>パーソナルカラー：</strong><%= personal_color_name(@user.personal_color) %></p>
         <% else %>
           <p class="mb-0"><strong>パーソナルカラー：</strong>未設定</p>
         <% end %>
