@@ -7,7 +7,6 @@ h1 {
   .cover-new {
     height: 120%;
     width: 100%;
-    background-image: url(/assets/new.jpg);
     background-color: rgba(255, 255, 255, 0.4);
     background-blend-mode: lighten;
     background-size: 100% 100%;
@@ -27,7 +26,6 @@ h1 {
   .cover-index {
     height: 110%;
     width: 100%;
-    background-image: url(/assets/index.jpg);
     background-color: rgba(255, 255, 255, 0.4);
     background-blend-mode: lighten;
     background-size: 100% 100%;
@@ -65,7 +63,6 @@ h1 {
   .cover-show {
     height: 110%;
     width: 100%;
-    background-image: url(/assets/show.jpg);
     background-size: 100% 100%;
   }
   
@@ -77,7 +74,6 @@ h1 {
   .cover-edit {
     height: 110%;
     width: 100%;
-    background-image: url(/assets/edit.jpg);
     background-color: rgba(255, 255, 255, 0.4);
     background-blend-mode: lighten;
     background-size: 100% 100%;

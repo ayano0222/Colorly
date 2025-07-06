@@ -29,6 +29,11 @@
   margin-bottom: 2em;
 }
 
+// トップ画面の背景を白に設定
+body {
+  background: $color-bg;
+}
+
 .text-center {
   text-align: center;
   width: 100%;
