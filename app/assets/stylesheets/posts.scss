@@ -56,6 +56,28 @@ h1 {
   width: 100%;
   max-width: 300px;
 }
+
+// 投稿の表示順序を制御
+.post-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+// 画像（1番目）
+.post-link img {
+  order: 1;
+  margin-bottom: 1em;
+}
+
+// 商品名（2番目）
+.post-link .caption:nth-child(3) {
+  order: 2;
+  margin-bottom: 0.5em;
+  font-weight: 600;
+  font-size: 20px;
+}
   
   .one-post.card a:hover .caption,
   .one-post.card a:focus .caption {
