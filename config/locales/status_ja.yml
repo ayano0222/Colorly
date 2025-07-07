@@ -4,3 +4,15 @@ ja:
       status:
         published: '投稿する'
         draft: '下書きする'
+  activerecord:
+    attributes:
+      post:
+        image: "画像"
+    models:
+      post: "投稿"
+    errors:
+      models:
+        post:
+          attributes:
+            image:
+              blank: "画像を選択してください。"
