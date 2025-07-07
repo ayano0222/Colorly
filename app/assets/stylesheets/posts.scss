@@ -475,3 +475,67 @@ h1 {
 .form-section .tag-text {
   font-size: 0.9em;
 }
+
+.cover-show .caption,
+.cover-show .caption:hover,
+.cover-show .caption:focus,
+.cover-show .caption:active {
+  color: $color-navy !important;
+  background: none !important;
+  font-style: normal !important;
+  text-decoration: none !important;
+  transition: none !important;
+}
+
+.cover-show .caption {
+  text-align: left !important;
+  margin-left: 0 !important;
+}
+
+.cover-show .btn-outline-primary {
+  color: $color-navy;
+  border-color: $color-navy;
+  background: #B0E0E6;
+}
+.cover-show .btn-outline-primary:hover, .cover-show .btn-outline-primary:focus {
+  color: #fff;
+  background: $color-navy;
+  border-color: $color-navy;
+}
+.cover-show .btn-info {
+  background: $color-beige;
+  color: $color-navy;
+  border: none;
+}
+.cover-show .btn-info:hover, .cover-show .btn-info:focus {
+  background: $color-navy;
+  color: #fff;
+}
+.cover-show .btn-danger {
+  background: #ffb6b6;
+  color: $color-navy;
+  border: none;
+}
+.cover-show .btn-danger:hover, .cover-show .btn-danger:focus {
+  background: $color-navy;
+  color: #fff;
+}
+
+.cover .btn-primary {
+  background: $color-beige;
+  color: $color-navy;
+  border: none;
+}
+.cover .btn-primary:hover, .cover .btn-primary:focus {
+  background: $color-navy;
+  color: #fff;
+}
+.cover .btn-success {
+  background: #B0E0E6;
+  color: $color-navy;
+  border: none;
+}
+.cover .btn-success:hover, .cover .btn-success:focus {
+  background: $color-navy;
+  color: #fff;
+}
