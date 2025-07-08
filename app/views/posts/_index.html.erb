@@ -3,20 +3,20 @@
     <% @posts.each do |post| %>
       <div class="one-post card col-sm-4 mb-3">
         <%= link_to post_path(post), class: "post-link" do %>
-          <p class="caption"><%= post.user.name %></p>
-          <% if post.user.personal_color.present? %>
-            <p class="caption">パーソナルカラー：<%= personal_color_name(post.user.personal_color) %></p>
-          <% end %>
+          <p class="caption fw-bold mb-1" style="font-size:1.1em;"><%= post.location %></p>
+          <p class="caption mb-0"><%= post.user.name %></p>
           <%= attachment_image_tag post, :image, format: 'jpeg', size: '300x200' %>
-          <p class="caption"><%= post.location %></p>
-          <p class="caption"><%= "#{post.comments.count} コメント" %></p>
+          <% if post.user.personal_color.present? %>
+            <p class="caption mb-1">パーソナルカラー：<%= personal_color_name(post.user.personal_color) %></p>
+          <% end %>
           <% if post.tags.present? %>
-            <div class="caption tags">
+            <div class="caption tags mt-1">
               <% post.tags.each do |tag| %>
                 <span class="tag">#<%= tag.name %></span>
               <% end %>
             </div>
           <% end %>
+          <p class="caption"><%= "#{post.comments.count} コメント" %></p>
         <% end %>
         <% if current_user.bookmark?(post) %>
           <%= button_to 'ブックマーク解除', post_bookmark_path(post), method: :delete, class: 'btn btn-outline-danger mt-2' %>
@@ -33,4 +33,4 @@
   </div>
 <% end %>
 
-  <%= paginate @posts %>
+<%= paginate @posts %>
