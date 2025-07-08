@@ -41,6 +41,30 @@
   margin-bottom: 1.5em;
 }
 
+.profile-img {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #4682B4;
+  margin-right: 24px;
+  background: #fff;
+}
+
+.profile-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 110px;
+  padding: 1.5em 2em;
+  background: #B0E0E6;
+  border: 2px solid #B0E0E6;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(34,58,94,0.07);
+  margin-bottom: 1.5em;
+  word-break: break-word;
+}
+
 .caption a {
   color: $color-navy;
   font-style: normal;
