@@ -18,10 +18,12 @@
           <% end %>
           <p class="caption"><%= "#{post.comments.count} コメント" %></p>
         <% end %>
-        <% if current_user.bookmark?(post) %>
-          <%= button_to 'ブックマーク解除', post_bookmark_path(post), method: :delete, class: 'btn btn-outline-danger mt-2' %>
-        <% else %>
-          <%= button_to 'ブックマーク', post_bookmark_path(post), method: :post, class: 'btn btn-outline-primary mt-2' %>
+        <% unless local_assigns[:draft_page] %>
+          <% if current_user.bookmark?(post) %>
+            <%= button_to 'ブックマーク解除', post_bookmark_path(post), method: :delete, class: 'btn btn-outline-danger mt-2' %>
+          <% else %>
+            <%= button_to 'ブックマーク', post_bookmark_path(post), method: :post, class: 'btn btn-outline-primary mt-2' %>
+          <% end %>
         <% end %>
       </div>
     <% end %>
