@@ -107,6 +107,13 @@
 .one-post.card .d-flex {
   align-items: center;
   gap: 1em;
+  flex-wrap: nowrap;
+}
+
+.one-post.card .user-link {
+  min-width: 0;
+  max-width: calc(100% - 70px);
+  overflow-wrap: break-word;
 }
 
 .one-post.card .profile-img {
@@ -121,11 +128,15 @@
 .one-post.card .caption {
   margin-bottom: 0.3em;
   font-size: 0.9em;
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .one-post.card .caption.h4 {
   font-size: 1.1em;
   margin-bottom: 0.5em;
   font-weight: 600;
+}
+
+.one-post.card .caption.personal-color {
+  white-space: pre-line;
 }
