@@ -4,22 +4,14 @@
   </div>
 
   <% @messages.each do |m| %>
-    <% if m.user_id == current_user.id %>
-      <div class="mycomment">
+    <div class="talk-row <%= m.user_id == current_user.id ? 'my-talk' : 'other-talk' %>">
+      <% if m.user_id != current_user.id %>
+        <!-- アイコン画像表示を削除 -->
+      <% end %>
+      <div class="talk-balloon">
         <p><%= m.body %></p>
       </div>
-    <% else %>
-      <div class="fukidasi">
-        <div class="faceicon">
-          <%= image_tag m.user.avatar_image %>
-        </div>
-        <div class="chatting">
-          <div class="says">
-            <p><%= m.body %></p>
-          </div>
-        </div>
-      </div>
-    <% end %>
+    </div>
   <% end %>
 
   <div class="chat-form-box">
