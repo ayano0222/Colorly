@@ -12,25 +12,56 @@
 }
 
 .bookmark-card {
-  background: $color-beige;
+  background: #B0E0E6; /* 投稿カードと同じ色に統一 */
   border-radius: 12px;
   box-shadow: 0 2px 12px rgba(34,58,94,0.07);
   padding: 2em;
   margin-bottom: 2em;
   width: 100%;
   max-width: 600px;
+  transition: background 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+  text-align: left;
+  border: 2px solid #B0E0E6;
+}
+.bookmark-card:hover, .bookmark-card:focus {
+  background: #e0ffff;
+  box-shadow: 0 4px 16px rgba(34,58,94,0.12);
+  text-decoration: underline;
 }
 
-.card-title a {
+.card-title,
+.caption {
   color: $color-navy;
   font-style: normal;
   font-weight: 600;
   transition: color 0.2s, font-style 0.2s;
-  text-decoration: none;
+  text-decoration: inherit;
 }
-.card-title a:hover, .card-title a:focus {
+.bookmark-card:hover .card-title,
+.bookmark-card:hover .caption {
   color: #1a73e8;
   font-style: italic;
-  text-decoration: underline;
+  text-decoration: inherit;
+}
+
+.card-title a,
+.card-title a:hover,
+.card-title a:focus {
+  color: inherit;
+  font-style: inherit;
+  text-decoration: inherit;
   background: none;
+}
+
+.bookmark-card .w-100 {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.bookmark-card h5,
+.bookmark-card .caption,
+.bookmark-card .card-text {
+  text-align: left;
+  margin-left: 0;
 }

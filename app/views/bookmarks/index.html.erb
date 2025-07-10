@@ -1,12 +1,21 @@
 <div class="bookmark-background"> 
-<h2>ブックマークした投稿</h2>
+  <h2>ブックマークした投稿</h2>
 
-<% @posts.each do |post| %>
-  <div class="one-post card mb-3">
-    <div class="card-body">
-      <h5 class="card-title"><%= link_to post.location, post_path(post) %></h5>
-      <p class="card-text"><%= truncate(post.text, length: 100) %></p>
-    </div>
-  </div>
-<% end %>
+  <% @posts.each do |post| %>
+    <%= link_to post_path(post), class: "bookmark-card mb-3 d-block text-decoration-none text-dark" do %>
+      <div class="d-flex align-items-center">
+        <%= attachment_image_tag post, :image, format: 'jpeg', size: '120x90', class: 'me-3' %>
+        <div class="w-100">
+          <h5 class="card-title mb-1"><%= post.location %></h5>
+          <div class="d-flex align-items-center mb-1">
+            <p class="mb-0 caption me-1">by <%= post.user.name %></p>
+            <% if post.user.personal_color.present? %>
+              <p class="mb-0 caption" style="white-space:nowrap;">パーソナルカラー：<%= personal_color_name(post.user.personal_color) %></p>
+            <% end %>
+          </div>
+          <p class="card-text mb-0 mt-1" style="word-break:break-all;"><%= truncate(post.text, length: 100) %></p>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
 </div>
