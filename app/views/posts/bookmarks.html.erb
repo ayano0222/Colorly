@@ -1,19 +1,45 @@
-<h2>ブックマークした投稿</h2>
+<div class="bookmark-background">
+  <div class="container d-flex flex-column align-items-center">
+    <div class="row mt-5">
+      <h2 class="font-weight-normal">ブックマークした投稿</h2>
+    </div>
 
-<% if @posts.any? %>
-  <div class="row">
-    <% @posts.each do |post| %>
-      <div class="col-sm-4 mb-3">
-        <%= link_to post_path(post) do %>
-          <p><%= post.user.name %></p>
-          <%= image_tag post.image.variant(resize: "300x200") if post.image.attached? %>
-          <p><%= post.location %></p>
+    <% if @posts.any? %>
+      <div class="row w-100 justify-content-center">
+        <% @posts.each do |post| %>
+          <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
+            <%= link_to post_path(post), class: "bookmark-card" do %>
+              <div class="text-center mb-3">
+                <%= image_tag post.image.variant(resize: "300x200"), class: "img-fluid rounded" if post.image.attached? %>
+              </div>
+              <div class="card-content">
+                <h5 class="card-title mb-2"><%= post.location %></h5>
+                <p class="caption mb-1"><%= post.user.name %></p>
+                <% if post.user.personal_color.present? %>
+                  <p class="caption personal-color mb-1"><%= personal_color_name(post.user.personal_color) %></p>
+                <% else %>
+                  <p class="caption personal-color mb-1">パーソナルカラー未設定</p>
+                <% end %>
+                <% if post.text.present? %>
+                  <p class="caption review mb-0"><%= post.text %></p>
+                <% else %>
+                  <p class="caption review mb-0">レビューなし</p>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
         <% end %>
+      </div>
+
+      <div class="row w-100 justify-content-center">
+        <div class="col-12">
+          <%= paginate @posts %>
+        </div>
+      </div>
+    <% else %>
+      <div class="text-center mt-5">
+        <p>ブックマーク中の投稿はありません。</p>
       </div>
     <% end %>
   </div>
-
-  <%= paginate @posts %>
-<% else %>
-  <p>ブックマーク中の投稿はありません。</p>
-<% end %>
+</div>

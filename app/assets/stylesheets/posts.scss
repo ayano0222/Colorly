@@ -567,3 +567,248 @@ h1 {
   background: $color-navy;
   color: #fff;
 }
+
+// レスポンシブ対応
+// =============================
+
+// タブレット (768px以下)
+@media (max-width: 768px) {
+  .cover-new,
+  .cover-index,
+  .cover-show,
+  .cover-edit {
+    height: 100%;
+  }
+  
+  .form-label {
+    font-size: 18px;
+  }
+  
+  .form-group {
+    max-width: 100%;
+  }
+  
+  .one-post img {
+    max-width: 250px;
+    height: 180px;
+  }
+  
+  .caption {
+    font-size: 16px;
+    max-width: 250px;
+  }
+  
+  .one-post.card {
+    padding: 1.5em;
+    margin: 1em 0.3em;
+    min-height: 350px;
+    max-width: 350px;
+  }
+  
+  .search-box {
+    width: 90%;
+    padding: 1em;
+  }
+  
+  .tag-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.4em;
+  }
+  
+  .post-form-container {
+    padding: 2em;
+    margin: 0 1em;
+  }
+  
+  .post-form-container .form-label {
+    font-size: 1.1em;
+  }
+  
+  .post-form-container .form-control {
+    font-size: 1em;
+    padding: 10px 12px;
+  }
+  
+  .post-form-container textarea.form-control {
+    min-height: 100px;
+  }
+  
+  .post-form-container .btn-success {
+    padding: 10px 25px;
+    font-size: 1em;
+  }
+}
+
+// スマートフォン (480px以下)
+@media (max-width: 480px) {
+  .cover-new,
+  .cover-index,
+  .cover-show,
+  .cover-edit {
+    height: 100%;
+  }
+  
+  .form-label {
+    font-size: 16px;
+  }
+  
+  .one-post img {
+    max-width: 200px;
+    height: 150px;
+  }
+  
+  .caption {
+    font-size: 14px;
+    max-width: 200px;
+  }
+  
+  .one-post.card {
+    padding: 1em;
+    margin: 0.8em 0.2em;
+    min-height: 300px;
+    max-width: 280px;
+  }
+  
+  .search-box {
+    width: 95%;
+    padding: 0.8em;
+  }
+  
+  .search-title {
+    font-size: 1em;
+  }
+  
+  .tag-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 0.3em;
+  }
+  
+  .tag-label {
+    padding: 0.25em 0.5em;
+    font-size: 0.75em;
+  }
+  
+  .filter-row {
+    flex-direction: column;
+    gap: 0.8em;
+  }
+  
+  .filter-item {
+    max-width: 100%;
+  }
+  
+  .search-btn {
+    width: 100%;
+    padding: 0.5em 1em;
+  }
+  
+  .post-form-container {
+    padding: 1.5em;
+    margin: 0 0.5em;
+  }
+  
+  .post-form-container .form-label {
+    font-size: 1em;
+  }
+  
+  .post-form-container .form-control {
+    font-size: 0.9em;
+    padding: 8px 10px;
+  }
+  
+  .post-form-container textarea.form-control {
+    min-height: 80px;
+  }
+  
+  .post-form-container .btn-success {
+    padding: 8px 20px;
+    font-size: 0.9em;
+  }
+  
+  .post-form-container .tag-grid {
+    gap: 6px;
+  }
+  
+  .post-form-container .tag-label {
+    padding: 4px 8px;
+    font-size: 0.8em;
+  }
+  
+  .index-left {
+    margin-left: 1rem !important;
+  }
+  
+  .comments {
+    margin-left: 20px;
+  }
+  
+  .talk-balloon {
+    max-width: 80vw;
+    padding: 8px 12px;
+    font-size: 0.9em;
+  }
+}
+
+// 超小型デバイス (320px以下)
+@media (max-width: 320px) {
+  .one-post img {
+    max-width: 180px;
+    height: 130px;
+  }
+  
+  .caption {
+    font-size: 13px;
+    max-width: 180px;
+  }
+  
+  .one-post.card {
+    padding: 0.8em;
+    margin: 0.6em 0.1em;
+    min-height: 280px;
+    max-width: 250px;
+  }
+  
+  .search-box {
+    width: 98%;
+    padding: 0.6em;
+  }
+  
+  .tag-grid {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 0.2em;
+  }
+  
+  .tag-label {
+    padding: 0.2em 0.4em;
+    font-size: 0.7em;
+  }
+  
+  .post-form-container {
+    padding: 1.2em;
+    margin: 0 0.3em;
+  }
+  
+  .post-form-container .form-label {
+    font-size: 0.9em;
+  }
+  
+  .post-form-container .form-control {
+    font-size: 0.85em;
+    padding: 6px 8px;
+  }
+  
+  .post-form-container textarea.form-control {
+    min-height: 70px;
+  }
+  
+  .post-form-container .btn-success {
+    padding: 6px 16px;
+    font-size: 0.85em;
+  }
+  
+  .talk-balloon {
+    max-width: 85vw;
+    padding: 6px 10px;
+    font-size: 0.85em;
+  }
+}

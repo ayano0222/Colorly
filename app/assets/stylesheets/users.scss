@@ -140,3 +140,215 @@
 .one-post.card .caption.personal-color {
   white-space: pre-line;
 }
+
+// マイページのボタンスタイル統一
+.cover-user-show .btn-success {
+  background: $color-beige;
+  color: $color-navy;
+  border: 2px solid $color-navy;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.cover-user-show .btn-success:hover,
+.cover-user-show .btn-success:focus {
+  background: $color-navy;
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(34,58,94,0.2);
+}
+
+.cover-user-show .btn-danger {
+  background: #ffb6b6;
+  color: $color-navy;
+  border: 2px solid $color-navy;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.cover-user-show .btn-danger:hover,
+.cover-user-show .btn-danger:focus {
+  background: $color-navy;
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(34,58,94,0.2);
+}
+
+.cover-user-show .btn-primary {
+  background: #B0E0E6;
+  color: $color-navy;
+  border: 2px solid $color-navy;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.cover-user-show .btn-primary:hover,
+.cover-user-show .btn-primary:focus {
+  background: $color-navy;
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(34,58,94,0.2);
+}
+
+// レスポンシブ対応
+// =============================
+
+// タブレット (768px以下)
+@media (max-width: 768px) {
+  .cover-user-show,
+  .cover-user-index,
+  .cover-user-edit {
+    height: 100%;
+  }
+  
+  .profile {
+    padding: 1.5em 0.8em;
+    margin-bottom: 1.5em;
+  }
+  
+  .profile-box, .color-box {
+    padding: 1.2em 0.8em;
+    margin-bottom: 1.2em;
+  }
+  
+  .profile-img {
+    width: 90px;
+    height: 90px;
+    margin-right: 18px;
+  }
+  
+  .profile-box {
+    padding: 1.2em 1.5em;
+    min-height: 90px;
+  }
+  
+  .one-post.card {
+    padding: 0.8em;
+    margin-bottom: 0.8em;
+    max-width: 280px;
+  }
+  
+  .one-post.card .profile-img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .one-post.card .caption {
+    font-size: 0.85em;
+  }
+  
+  .one-post.card .caption.h4 {
+    font-size: 1em;
+  }
+}
+
+// スマートフォン (480px以下)
+@media (max-width: 480px) {
+  .cover-user-show,
+  .cover-user-index,
+  .cover-user-edit {
+    height: 100%;
+  }
+  
+  .profile {
+    padding: 1em 0.6em;
+    margin-bottom: 1em;
+  }
+  
+  .profile-box, .color-box {
+    padding: 1em 0.6em;
+    margin-bottom: 1em;
+  }
+  
+  .profile-img {
+    width: 70px;
+    height: 70px;
+    margin-right: 15px;
+  }
+  
+  .profile-box {
+    padding: 1em 1.2em;
+    min-height: 70px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .one-post.card {
+    padding: 0.6em;
+    margin-bottom: 0.6em;
+    max-width: 250px;
+  }
+  
+  .one-post.card .d-flex {
+    gap: 0.6em;
+  }
+  
+  .one-post.card .profile-img {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .one-post.card .user-link {
+    max-width: calc(100% - 55px);
+  }
+  
+  .one-post.card .caption {
+    font-size: 0.8em;
+    margin-bottom: 0.2em;
+  }
+  
+  .one-post.card .caption.h4 {
+    font-size: 0.9em;
+    margin-bottom: 0.3em;
+  }
+}
+
+// 超小型デバイス (320px以下)
+@media (max-width: 320px) {
+  .profile {
+    padding: 0.8em 0.4em;
+    margin-bottom: 0.8em;
+  }
+  
+  .profile-box, .color-box {
+    padding: 0.8em 0.4em;
+    margin-bottom: 0.8em;
+  }
+  
+  .profile-img {
+    width: 60px;
+    height: 60px;
+    margin-right: 12px;
+  }
+  
+  .profile-box {
+    padding: 0.8em 1em;
+    min-height: 60px;
+  }
+  
+  .one-post.card {
+    padding: 0.5em;
+    margin-bottom: 0.5em;
+    max-width: 220px;
+  }
+  
+  .one-post.card .profile-img {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .one-post.card .user-link {
+    max-width: calc(100% - 50px);
+  }
+  
+  .one-post.card .caption {
+    font-size: 0.75em;
+    margin-bottom: 0.15em;
+  }
+  
+  .one-post.card .caption.h4 {
+    font-size: 0.85em;
+    margin-bottom: 0.25em;
+  }
+}

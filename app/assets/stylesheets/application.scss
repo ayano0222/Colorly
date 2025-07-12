@@ -205,3 +205,134 @@ header a {
   font-size: 0.9em;
   margin-right: 6px;
 }
+
+// レスポンシブ対応
+// =============================
+
+// タブレット (768px以下)
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+  
+  header {
+    padding: 0.5em 1em;
+    flex-wrap: wrap;
+  }
+  
+  header div:first-child {
+    font-size: 20px;
+  }
+  
+  header div {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+  
+  .button, input[type="submit"], button {
+    padding: 0.4em 1.2em;
+    font-size: 0.9em;
+  }
+  
+  input, textarea, select {
+    font-size: 0.9em;
+    padding: 0.4em;
+  }
+  
+  .section {
+    margin: 1.5em 0;
+  }
+  
+  .profile-img {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+// スマートフォン (480px以下)
+@media (max-width: 480px) {
+  body {
+    font-size: 13px;
+  }
+  
+  header {
+    padding: 0.4em 0.8em;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5em;
+  }
+  
+  header div:first-child {
+    font-size: 18px;
+    margin-right: 0;
+  }
+  
+  header div {
+    margin-left: 10px;
+    margin-right: 10px;
+    line-height: 25px;
+  }
+  
+  .button, input[type="submit"], button {
+    padding: 0.3em 1em;
+    font-size: 0.85em;
+  }
+  
+  input, textarea, select {
+    font-size: 0.85em;
+    padding: 0.3em;
+  }
+  
+  .section {
+    margin: 1em 0;
+  }
+  
+  .profile-img {
+    width: 60px;
+    height: 60px;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-size: 0.9em;
+  }
+  
+  p {
+    font-size: 0.85em;
+  }
+}
+
+// 超小型デバイス (320px以下)
+@media (max-width: 320px) {
+  body {
+    font-size: 12px;
+  }
+  
+  header {
+    padding: 0.3em 0.6em;
+  }
+  
+  header div:first-child {
+    font-size: 16px;
+  }
+  
+  header div {
+    margin-left: 8px;
+    margin-right: 8px;
+    line-height: 20px;
+  }
+  
+  .button, input[type="submit"], button {
+    padding: 0.25em 0.8em;
+    font-size: 0.8em;
+  }
+  
+  input, textarea, select {
+    font-size: 0.8em;
+    padding: 0.25em;
+  }
+  
+  .profile-img {
+    width: 50px;
+    height: 50px;
+  }
+}
