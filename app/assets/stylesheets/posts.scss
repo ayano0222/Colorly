@@ -364,116 +364,144 @@ h1 {
   }
 }
 
-// 新規投稿フォームの横幅調整
-.post-form-box {
+// 新規投稿フォームの統一されたデザイン
+.post-form-container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 800px;
   background: #B0E0E6;
   border: 2px solid #B0E0E6;
   border-radius: 12px;
   box-shadow: 0 2px 12px rgba(34,58,94,0.07);
-  padding: 2em;
+  padding: 2.5em;
   margin: 0 auto;
 }
 
-// 新規投稿フォームのセクション分離
-.form-section {
-  background: #B0E0E6;
-  border: 2px solid #B0E0E6;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(34,58,94,0.07);
-  padding: 1em;
+.post-form-container .form-group {
+  margin-bottom: 1.5em;
   width: 100%;
-  max-width: 100%;
-  margin: 0 auto 1em auto;
-  min-height: auto;
 }
 
-.form-section .section-title {
-  color: $color-navy;
-  font-weight: 700;
+.post-form-container .form-label {
   font-size: 1.2em;
-  margin-bottom: 0.8em;
-  text-align: center;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+  display: block;
+  color: $color-navy;
 }
 
-.form-section .form-group {
-  margin-bottom: 0.8em;
-}
-
-.form-section .form-control {
+.post-form-container .form-control {
   height: auto;
   min-height: 45px;
   font-size: 1.1em;
-  width: calc(100% - 2px);
+  width: 100%;
   max-width: 100%;
-  padding: 10px 15px;
+  padding: 12px 15px;
   border: 2px solid #ddd;
   border-radius: 8px;
   transition: border-color 0.3s ease;
   box-sizing: border-box;
+  background: white;
+  display: block;
 }
 
-.form-section .form-control:focus {
+.post-form-container .form-control:focus {
   outline: none;
   border-color: #40c4ff;
   box-shadow: 0 0 0 2px rgba(64, 196, 255, 0.1);
 }
 
-.form-section textarea.form-control {
-  min-height: 100px;
+.post-form-container textarea.form-control {
+  min-height: 120px;
   resize: vertical;
-  width: calc(100% - 2px);
+  line-height: 1.5;
+  width: 100%;
   max-width: 100%;
   box-sizing: border-box;
 }
 
-.form-section .form-label {
-  font-size: 1.1em;
-  font-weight: 600;
-  margin-bottom: 0.3em;
-  display: block;
-  color: $color-navy;
+.post-form-container .form-control-file {
+  padding: 8px 0;
+  border: none;
+  background: transparent;
+  width: 100%;
+  max-width: 100%;
 }
 
-// タグ選択の横並びレイアウト
-.form-section .tag-grid {
+.post-form-container .tag-section {
+  background: white;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  padding: 1em;
+  margin-top: 0.5em;
+}
+
+.post-form-container .tag-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
   align-items: center;
 }
 
-.form-section .tag-item {
+.post-form-container .tag-item {
   flex: 0 0 auto;
   margin: 0;
 }
 
-.form-section .tag-label {
+.post-form-container .tag-label {
   display: flex;
   align-items: center;
   gap: 5px;
-  padding: 8px 12px;
-  background: white;
+  padding: 6px 12px;
+  background: #f8f9fa;
   border: 1px solid #ddd;
   border-radius: 20px;
   cursor: pointer;
   transition: all 0.3s ease;
   white-space: nowrap;
+  font-size: 0.9em;
 }
 
-.form-section .tag-label:hover {
+.post-form-container .tag-label:hover {
   background: #40c4ff;
   color: white;
   border-color: #40c4ff;
 }
 
-.form-section .tag-checkbox {
+.post-form-container .tag-checkbox {
   margin: 0;
 }
 
-.form-section .tag-text {
+.post-form-container .tag-text {
   font-size: 0.9em;
+}
+
+// セレクトボックスの幅統一
+.post-form-container select.form-control {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.post-form-container .btn-success {
+  background: #B0E0E6;
+  color: $color-navy;
+  border: 2px solid $color-navy;
+  font-weight: 600;
+  padding: 12px 30px;
+  font-size: 1.1em;
+  transition: all 0.3s ease;
+}
+
+.post-form-container .btn-success:hover {
+  background: $color-navy;
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(34,58,94,0.2);
+}
+
+// 既存のform-sectionスタイルを削除または無効化
+.form-section {
+  display: none;
 }
 
 .cover-show .caption,

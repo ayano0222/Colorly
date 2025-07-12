@@ -13,50 +13,50 @@
       </div>
     <% end %>
 
-    <div class="row mt-5">
-      <%= form_with model: @post, local:true do |f| %>
-        <div class="form-section mb-4">
-          <div class="form-group mb-3">
+    <div class="row mt-5 w-100">
+      <div class="post-form-container">
+        <%= form_with model: @post, local:true do |f| %>
+          <div class="form-group mb-4">
             <label class="form-label">商品名</label>
             <%= f.text_field :location, class: "form-control" %>
           </div>
-        </div>
 
-        <div class="form-section mb-4">
-          <div class="form-group mb-3">
+          <div class="form-group mb-4">
             <label class="form-label">レビュー</label>
-            <%=f.text_area :text, rows: 10, class: "form-control" %>
+            <%= f.text_area :text, rows: 8, class: "form-control" %>
           </div>
-        </div>
 
-        <div class="form-section mb-4">
-          <div class="form-group mb-3">
+          <div class="form-group mb-4">
             <label class="form-label">画像</label><br>
-            <%= f.file_field :image %>
+            <%= f.file_field :image, class: "form-control-file" %>
           </div>
 
-          <div class="form-group">
-            <%= f.select :status, Post.statuses.keys.map { |k| [t("enums.post.status.#{k}"),k]}, {}, {class: "custom-select w-25 mb-3"} %>
+          <div class="form-group mb-4">
+            <label class="form-label">投稿ステータス</label>
+            <%= f.select :status, Post.statuses.keys.map { |k| [t("enums.post.status.#{k}"),k]}, {}, {class: "form-control"} %>
           </div>
-        </div>
 
-        <div class="form-section mb-4">
-          <div class="tag-section mb-3">
-            <div class="tag-grid">
-              <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
-                <div class="tag-item">
-                  <%= tag.label class: "tag-label" do %>
-                    <%= tag.check_box class: "tag-checkbox" %>
-                    <span class="tag-text"><%= tag.text %></span>
-                  <% end %>
-                </div>
-              <% end %>
+          <div class="form-group mb-4">
+            <label class="form-label">タグ選択</label>
+            <div class="tag-section">
+              <div class="tag-grid">
+                <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+                  <div class="tag-item">
+                    <%= tag.label class: "tag-label" do %>
+                      <%= tag.check_box class: "tag-checkbox" %>
+                      <span class="tag-text"><%= tag.text %></span>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <%= f.submit '投稿する', class: "btn btn-success" %>
-      <% end %>
+          
+          <div class="form-group text-center">
+            <%= f.submit '投稿する', class: "btn btn-success btn-lg" %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
