@@ -9,21 +9,24 @@
         <% @posts.each do |post| %>
           <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
             <%= link_to post_path(post), class: "bookmark-card" do %>
-              <div class="text-center mb-3">
+              <div class="image-wrapper text-center mb-3">
                 <%= image_tag post.image.variant(resize: "300x200"), class: "img-fluid rounded" if post.image.attached? %>
               </div>
               <div class="card-content">
                 <h5 class="card-title mb-2"><%= post.location %></h5>
+                <hr class="bookmark-divider">
                 <p class="caption mb-1"><%= post.user.name %></p>
+                <hr class="bookmark-divider">
                 <% if post.user.personal_color.present? %>
                   <p class="caption personal-color mb-1"><%= personal_color_name(post.user.personal_color) %></p>
                 <% else %>
                   <p class="caption personal-color mb-1">パーソナルカラー未設定</p>
                 <% end %>
+                <hr class="bookmark-divider">
                 <% if post.text.present? %>
-                  <p class="caption review mb-0"><%= post.text %></p>
+                  <p class="caption review mb-0 bookmark-review-popup"><%= post.text %></p>
                 <% else %>
-                  <p class="caption review mb-0">レビューなし</p>
+                  <p class="caption review mb-0 bookmark-review-popup">レビューなし</p>
                 <% end %>
               </div>
             <% end %>
