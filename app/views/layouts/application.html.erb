@@ -12,18 +12,32 @@
 
   <body>
     <% if user_signed_in? %>
-      <header>
-        <div><%= link_to root_path, class: "text-white nav-link" do %>colorly<% end %></div>
-        <div><%= link_to "トップ", root_path, class: "text-white nav-link" %></div>
-        <div><%= link_to "投稿する", new_post_path, class: "text-white nav-link" %></div>
-        <div><%= link_to "投稿一覧", posts_path, class: "text-white nav-link" %></div>
-        <div><%= link_to "下書き一覧", confirm_posts_path, class: "text-white nav-link" %></div>
-        <div><%= link_to "ユーザ一覧", users_path, class: "text-white nav-link" %></div>
-        <div><%= link_to "マイページ", user_path(current_user.id), class: "text-white nav-link" %></div>
-        <div><%= link_to "マイブックマーク", bookmarks_posts_path, class: "text-white nav-link" %></div>
-        <div><%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: "text-white nav-link" %></div>
+      <header data-controller="menu">
+        <div class="header-left"><%= link_to root_path, class: "text-white nav-link" do %>colorly<% end %></div>
+        <button class="menu-toggle d-md-none" id="menu-toggle" aria-label="メニューを開く" data-action="menu#toggle"><span>☰</span></button>
+        <nav class="header-nav" id="header-nav" data-menu-target="nav">
+          <div><%= link_to "トップ", root_path, class: "text-white nav-link" %></div>
+          <div><%= link_to "投稿する", new_post_path, class: "text-white nav-link" %></div>
+          <div><%= link_to "投稿一覧", posts_path, class: "text-white nav-link" %></div>
+          <div><%= link_to "下書き一覧", confirm_posts_path, class: "text-white nav-link" %></div>
+          <div><%= link_to "ユーザ一覧", users_path, class: "text-white nav-link" %></div>
+          <div><%= link_to "マイページ", user_path(current_user.id), class: "text-white nav-link" %></div>
+          <div><%= link_to "マイブックマーク", bookmarks_posts_path, class: "text-white nav-link" %></div>
+          <div><%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: "text-white nav-link" %></div>
+        </nav>
       </header>
     <% end %>
     <%= yield %>
+    <script type="text/javascript">
+      document.addEventListener('DOMContentLoaded', function() {
+        var menuToggle = document.getElementById('menu-toggle');
+        var nav = document.getElementById('header-nav');
+        if(menuToggle && nav) {
+          menuToggle.addEventListener('click', function() {
+            nav.classList.toggle('open');
+          });
+        }
+      });
+    </script>
   </body>
 </html>
