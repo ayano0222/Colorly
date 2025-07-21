@@ -1,85 +1,127 @@
 <div class="cover-show">
-  <div class="container"><div class="container d-flex flex-column align-items-center">
-    <div class="row mt-5 mb-5">
-      <h1 class="font-weight-normal mt-5 mb-5">コスメ投稿詳細</h1>
-    </div>
+  <div class="container">
+    <div class="container d-flex flex-column align-items-center">
+      <div class="row mt-5 mb-5">
+        <h1 class="font-weight-normal mt-5 mb-5">コスメ投稿詳細</h1>
+      </div>
 
-    <% if @comment.errors.any? %>
-      <div class="card text-center text-white bg-danger mt-3">
-        <%= @comment.errors.count %>件のエラーが発生しました
-        <% @comment.errors.full_messages.each do |message| %>
-          <%= message %>
-        <% end %>
-      </div>
-    <% end %>
-    <div class="container d-flex mt-5">
-      <!-- 左カラム: 画像・タグ・ボタン類 -->
-      <div class="d-block me-5 text-start">
-        <h2 class="caption h4 mb-2"><%= @post.location %></h2>
-        <div class="d-flex align-items-center mb-2">
-          <p class="caption mb-0 me-3"><%= @post.user.name %></p>
-          <% if @post.user.personal_color.present? %>
-            <p class="caption mb-0" style="white-space: nowrap;">パーソナルカラー：<%= @post.user.personal_color %></p>
+      <% if @comment.errors.any? %>
+        <div class="card text-center text-white bg-danger mt-3">
+          <%= @comment.errors.count %>件のエラーが発生しました
+          <% @comment.errors.full_messages.each do |message| %>
+            <%= message %>
           <% end %>
         </div>
-        <%= attachment_image_tag @post, :image, format: 'jpeg', size: "450x350" %><br>
-        <div class="tags mt-3">
-          <% @post.tags.each do |tag| %>
-            <span class="badge bg-secondary me-1"><%= tag.name %></span>
-          <% end %>
-        </div>
-        <div class="d-flex align-items-center mb-2">
-          <% if @post.favorited_by?(current_user) %>
-            <%= link_to post_favorites_path(@post),  data: { turbo_method: :delete }, class: "favorite_btn me-2" do %>
-              ♥<%= @post.favorites.count %> いいね
+      <% end %>
+      <div class="container d-flex flex-wrap flex-md-nowrap mt-5 post-detail-flex">
+        <!-- 左カラム: 画像・タグ・ボタン類 -->
+        <div class="d-block me-5 text-start post-detail-left">
+          <h2 class="caption h4 mb-2"><%= @post.location %></h2>
+          <div class="d-flex align-items-center mb-2">
+            <p class="caption mb-0 me-3"><%= @post.user.name %></p>
+            <% if @post.user.personal_color.present? %>
+              <p class="caption mb-0" style="white-space: nowrap;">パーソナルカラー：<%= @post.user.personal_color %></p>
             <% end %>
-          <% else %>
-            <%= link_to post_favorites_path(@post),  data: { turbo_method: :post }, class: "favorite_btn me-2" do %>
-              ♡<%= @post.favorites.count %> いいね
-            <% end %>
-          <% end %>
-          <% if current_user.bookmark?(@post) %>
-            <%= button_to 'ブックマーク解除', post_bookmark_path(@post), method: :delete, class: "btn btn-outline-primary btn-sm ms-2" %>
-          <% else %>
-            <%= button_to 'ブックマーク', post_bookmark_path(@post), method: :post, class: "btn btn-outline-primary btn-sm ms-2" %>
-          <% end %>
-        </div>
-        <div class="d-flex align-items-center mt-3">
-          <%= link_to '投稿一覧ページへ', posts_path, class: "btn btn-dark me-2" %>
-          <% if @post.user == current_user %>
-            <%= link_to '編集する', edit_post_path(@post.id), class: "btn btn-info me-2" %>
-            <%= link_to '削除する', post_path(@post.id),  data: { turbo_method: :delete, turbo_confirm:  "本当に消しますか？"}, class: "btn btn-danger" %>
-          <% end %>
-        </div>
-      </div>
-      <!-- 右カラム: レビューとコメント -->
-      <div class="comments ml-5 mt-5" style="min-width:320px;">
-        <div class="review-box mb-3">
-          <span class="fw-bold">レビュー：</span>
-          <span id="text"><%= @post.text %></span>
-        </div>
-        <%= form_with(model:[@post, @comment], local: true) do |f| %>
-          <%= f.text_area :comment, :size=>"60x3",placeholder: "コメントする" %>
-          <%= f.submit "送信する", class: "btn btn-success mb-4" %>
-        <% end %>
-        閲覧数 <%= @post.view_counts.count %>
-        <p>コメント件数：<%= @comments.count %></p>
-        <% @comments.each do |comment| %>
-          <div class="comments-index mb-2">
-            <%= comment.user.name %>
-            <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %><br>
-            <div class="d-flex">
-              <%= comment.comment %>
-              <% if comment.user == current_user %>
-                <div class="comment-delete">
-                  <%= link_to "削除", post_comment_path(comment.post, comment),  data: { turbo_method: :delete }, class: "btn-sm btn-danger" %>
-                </div>
-              <% end %>
-            </div>
           </div>
-        <% end %>
-        <%= paginate @comments %>
+          <%= attachment_image_tag @post, :image, format: 'jpeg', size: "450x350" %><br>
+          <div class="tags mt-3">
+            <% @post.tags.each do |tag| %>
+              <span class="badge bg-secondary me-1"><%= tag.name %></span>
+            <% end %>
+          </div>
+          <div class="d-flex align-items-center mb-2">
+            <% if @post.favorited_by?(current_user) %>
+              <%= link_to post_favorites_path(@post),  data: { turbo_method: :delete }, class: "favorite_btn me-2" do %>
+                ♥<%= @post.favorites.count %> いいね
+              <% end %>
+            <% else %>
+              <%= link_to post_favorites_path(@post),  data: { turbo_method: :post }, class: "favorite_btn me-2" do %>
+                ♡<%= @post.favorites.count %> いいね
+              <% end %>
+            <% end %>
+            <% if current_user.bookmark?(@post) %>
+              <%= button_to 'ブックマーク解除', post_bookmark_path(@post), method: :delete, class: "btn btn-outline-primary btn-sm ms-2" %>
+            <% else %>
+              <%= button_to 'ブックマーク', post_bookmark_path(@post), method: :post, class: "btn btn-outline-primary btn-sm ms-2" %>
+            <% end %>
+          </div>
+          <div class="d-flex align-items-center mt-3">
+            <%= link_to '投稿一覧ページへ', posts_path, class: "btn btn-dark me-2" %>
+            <% if @post.user == current_user %>
+              <%= link_to '編集する', edit_post_path(@post.id), class: "btn btn-info me-2" %>
+              <%= link_to '削除する', post_path(@post.id),  data: { turbo_method: :delete, turbo_confirm:  "本当に消しますか？"}, class: "btn btn-danger" %>
+            <% end %>
+          </div>
+        </div>
+        <!-- 右カラム: レビューとコメント -->
+        <div class="comments ml-5 mt-5 post-detail-right">
+          <div class="review-box mb-3">
+            <span class="fw-bold">レビュー：</span>
+            <span id="text"><%= @post.text %></span>
+          </div>
+          <%= form_with(model:[@post, @comment], local: true) do |f| %>
+            <%= f.text_area :comment, :size=>"60x3",placeholder: "コメントする" %>
+            <%= f.submit "送信する", class: "btn btn-success mb-4" %>
+          <% end %>
+          閲覧数 <%= @post.view_counts.count %>
+          <p>コメント件数：<%= @comments.count %></p>
+          <% @comments.each do |comment| %>
+            <div class="comments-index mb-2">
+              <%= comment.user.name %>
+              <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %><br>
+              <div class="d-flex">
+                <%= comment.comment %>
+                <% if comment.user == current_user %>
+                  <div class="comment-delete">
+                    <%= link_to "削除", post_comment_path(comment.post, comment),  data: { turbo_method: :delete }, class: "btn-sm btn-danger" %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+          <%= paginate @comments %>
+        </div>
       </div>
     </div>
   </div>
 </div>
+<style>
+@media (max-width: 600px) {
+  .post-detail-flex {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  .post-detail-left, .post-detail-right {
+    margin: 0 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100vw !important;
+    box-sizing: border-box;
+    padding-left: 4vw !important;
+    padding-right: 4vw !important;
+  }
+  .comments {
+    margin-left: 0 !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box;
+    padding-left: 2vw !important;
+    padding-right: 2vw !important;
+  }
+  .review-box {
+    padding-left: 2vw !important;
+    padding-right: 2vw !important;
+  }
+  .post-detail-left img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    box-sizing: border-box;
+  }
+}
+</style>
