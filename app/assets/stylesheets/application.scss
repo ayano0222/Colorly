@@ -276,9 +276,12 @@ header a {
     padding: 0;
   }
   .header-nav > div {
-    padding: 0 1em;
+    padding: 0 0.8em;
     border-bottom: none;
     text-align: center;
+  }
+  .header-nav .nav-link {
+    font-size: 14px;
   }
 }
 
