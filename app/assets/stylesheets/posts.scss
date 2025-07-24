@@ -678,6 +678,13 @@ h1 {
     min-height: 32px;
     padding: 0.5em 0.2em;
   }
+  .post-form-container {
+    max-width: 96vw;
+    width: 96vw;
+    padding: 1.2em 2vw;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
 }
 
 // 超小型デバイス (320px以下)
@@ -715,8 +722,11 @@ h1 {
   }
   
   .post-form-container {
-    padding: 1.2em;
-    margin: 0 0.3em;
+    max-width: 98vw;
+    width: 98vw;
+    padding: 0.7em 1vw;
+    margin: 0 auto;
+    box-sizing: border-box;
   }
   
   .post-form-container .form-label {
