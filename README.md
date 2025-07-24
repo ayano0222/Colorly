@@ -1,6 +1,6 @@
 # Colorly
 好きだけじゃない、似合うも欲しい。  
-![アイコン](images/logo.png)
+![アイコン](app/assets/config/images/logo.png)
 
 # 概要  
 Colorlyは、パーソナルカラーに特化したコスメ情報の共有プラットフォームです。  
