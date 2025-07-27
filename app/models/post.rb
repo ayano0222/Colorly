@@ -12,8 +12,8 @@ class Post < ApplicationRecord
     has_many :bookmarks, dependent: :destroy
     has_many :bookmarking_users, through: :bookmarks, source: :user
 
-    validates :location, presence: true, length: { maximum: 15 }
-    validates :text, presence: true, length: { maximum: 195 }
+    validates :location, presence: true, length: { maximum: 30 }
+    validates :text, presence: true, length: { maximum: 300 }
     validates :image, presence: true
 
     enum status: { published: 0, draft: 1 }
