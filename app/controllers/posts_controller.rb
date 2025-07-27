@@ -47,9 +47,9 @@ class PostsController < ApplicationController
 
     # ページネーション（配列なら paginate_array）
     if @posts.is_a?(Array)
-      @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(10)
+      @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(6)
     else
-      @posts = @posts.page(params[:page]).per(10)
+      @posts = @posts.page(params[:page]).per(6)
     end
   end
  
